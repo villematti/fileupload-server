@@ -8,8 +8,6 @@ const fs = require("fs");
 
 const app = express();
 
-console.log(process.env.SSL_KEY);
-
 const options = {
     key: fs.readFileSync(process.env.SSL_KEY),
     cert: fs.readFileSync(process.env.SSL_CERT),
@@ -19,6 +17,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const PORT = process.env.PORT;
+const SSL_PORT = process.env.SSL_PORT;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
