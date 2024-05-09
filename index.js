@@ -26,7 +26,7 @@ const mergeChunks = async (fileName, totalChunks) => {
     const mergedFilePath = __dirname + "/merged_files";
 
     if (!fs.existsSync(mergedFilePath)) {
-        fs.mkdirSync(mergeChunks);
+        fs.mkdirSync(mergedFilePath);
     }
 
     const writeStream = fs.createWriteStream(`${mergedFilePath}/${fileName}`);
