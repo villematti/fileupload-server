@@ -8,6 +8,8 @@ const fs = require("fs");
 
 const app = express();
 
+console.log(process.env.SSL_KEY);
+
 const options = {
     key: fs.readFileSync(process.env.SSL_KEY),
     cert: fs.readFileSync(process.env.SSL_CERT),
