@@ -1,4 +1,6 @@
 const express = require("express");
+const https = require('https')
+const http = require('http')
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const multer = require("multer");
@@ -6,10 +8,15 @@ const fs = require("fs");
 
 const app = express();
 
+const options = {
+    key: fs.readFileSync(process.env.SSL_KEY),
+    cert: fs.readFileSync(process.env.SSL_CERT),
+};
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-const PORT = 80;
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -72,6 +79,5 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Port listening on ${PORT}`);
-});
+http.createServer(app).listen(PORT);
+https.createServer(options, app).listen(SSL_PORT)

@@ -1,3 +1,4 @@
 merged_files
 node_modules
 chunks
+.env
