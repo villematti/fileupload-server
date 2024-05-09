@@ -9,7 +9,7 @@ const app = express();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-const PORT = 8000;
+const PORT = 80;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
